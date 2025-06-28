@@ -30,19 +30,3 @@ is an online language academy, when user entre:
  - wechat
 
 2. Define your data models (User, Course, Order, etc.)
-
-
-# Database Schema
-1. users: id, user_name, password(hash), avatar, role, language, level, email.
-2. courses: id, title, description, prices, img, category, duration, model
-3. order: id, user_id, courses_id
-4. materials: id, file, courses_id
-5. permission: TODO
-6. login: i wanna use JWT for authentication
-
-# Backend API
-1. 
-
-# Frontend Structure Setup
-
-# Frontend Development
