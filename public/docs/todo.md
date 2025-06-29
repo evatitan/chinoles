@@ -6,15 +6,17 @@
 * ✅ State: Redux Toolkit
 * style: tailwind + MUI
 
+**DOING**
+🔄 Courses: Catalog + details pages
+
 **TODO**
 // HIGH PRIORITY (Core E-commerce)
-✅ Style: Tailwind + MUI
 ✅ Tests: Jest + RTL
 🔄 Authentication: Login/Register + JWT
 🔄 API: RTK Query integration
 🔄 Shopping Cart: Cart management
 🔄 Payment: Stripe integration
-🔄 Courses: Catalog + details pages
+
 🔄 cookies: react-cookie-consent
 
 // MEDIUM PRIORITY (UX Enhancement)

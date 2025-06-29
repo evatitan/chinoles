@@ -6,7 +6,6 @@ import { setAuth } from "./../redux/slices/authSlice";
 import { useFetch } from "./../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import type { LoginResponse, LoginFormInputs } from "../types/types";
-import "./login.css";
 
 const Login: React.FC = () => {
   const {
@@ -18,15 +17,20 @@ const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const { loginRes, error, fetchData } = useFetch<LoginResponse>();
+  const { fetchData, error } = useFetch<LoginResponse>();
 
   const onSubmit = async (data: LoginFormInputs) => {
-    await fetchData(data);
-    if (loginRes) {
-      dispatch(setAuth(loginRes));
-      navigate("/");
-    } else if (error) {
-      alert(error.message);
+    try {
+      const res = await fetchData(data);
+      if (res) {
+        dispatch(setAuth(res));
+        navigate("/");
+      } else if (error) {
+        alert(error.message);
+      }
+    } catch (error) {
+      alert("An unexpected error occurred. Please try again later.");
+      console.error("Login error:", error);
     }
   };
 
@@ -38,9 +42,7 @@ const Login: React.FC = () => {
         className="w-full flex flex-col gap-6"
       >
         <div className="flex flex-col items-center">
-          <label className="text-lg font-medium mb-2 text-center w-full">
-            Email
-          </label>
+          <label className="mb-1 font-medium">Email</label>
           <input
             type="email"
             className="border rounded px-4 py-2 w-full text-center"
@@ -53,9 +55,7 @@ const Login: React.FC = () => {
           )}
         </div>
         <div className="flex flex-col items-center">
-          <label className="text-lg font-medium mb-2 text-center w-full">
-            Password
-          </label>
+          <label className="mb-1 font-medium">Password</label>
           <input
             type="password"
             className="border rounded px-4 py-2 w-full text-center"
@@ -74,7 +74,6 @@ const Login: React.FC = () => {
           Login
         </button>
       </form>
-      {/* Optionally show loading/error UI */}
     </div>
   );
 };
