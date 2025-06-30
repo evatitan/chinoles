@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { Course } from "../../types/types";
-import { get } from "react-hook-form";
 
 const initialState: Course[] = [];
 
@@ -11,8 +10,11 @@ const coursesSlice = createSlice({
     getCourses: (state: Course[], action: PayloadAction<Course[]>) => {
       console.log(state, action);
     },
+    setCourses: (state: Course[], action: PayloadAction<Course[]>) => {
+      return action.payload;
+    },
   },
 });
 
-export const { getCourses } = coursesSlice.actions;
+export const { getCourses, setCourses } = coursesSlice.actions;
 export default coursesSlice.reducer;

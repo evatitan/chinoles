@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useRegister } from "../hooks/useFetch";
+import { useRegister } from "../hooks/useAsync";
 import type { RegisterResponse } from "../types/types";
 import { useNavigate } from "react-router-dom";
 
@@ -35,14 +35,29 @@ const Register: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto mt-20 bg-white rounded-xl shadow-lg p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Register</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      <h1
+        className="text-3xl font-bold mb-6 text-center"
+        style={{ color: "rgb(64, 145, 108)" }}
+      >
+        Register
+      </h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-5"
+        style={{ color: "rgb(85, 85, 85)" }}
+      >
         <div className="flex flex-col">
-          <label className="mb-1 font-medium">Name</label>
+          <label
+            className="mb-1 font-medium"
+            style={{ color: "rgb(64, 145, 108)" }}
+          >
+            Name
+          </label>
           <input
             {...register("name")}
             className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter your username"
+            style={{ color: "rgb(85, 85, 85)" }}
           />
           {errors.name && (
             <span className="text-red-500 text-sm mt-1 text-center w-full">
@@ -51,21 +66,33 @@ const Register: React.FC = () => {
           )}
         </div>
         <div className="flex flex-col">
-          <label className="mb-1 font-medium">Email</label>
+          <label
+            className="mb-1 font-medium"
+            style={{ color: "rgb(64, 145, 108)" }}
+          >
+            Email
+          </label>
           <input
             {...register("email")}
             className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter your email"
             type="email"
+            style={{ color: "rgb(85, 85, 85)" }}
           />
         </div>
         <div className="flex flex-col">
-          <label className="mb-1 font-medium">Password</label>
+          <label
+            className="mb-1 font-medium"
+            style={{ color: "rgb(64, 145, 108)" }}
+          >
+            Password
+          </label>
           <input
             {...register("password")}
             className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter your password"
             type="password"
+            style={{ color: "rgb(85, 85, 85)" }}
           />
           {errors.password && (
             <span className="text-red-500 text-sm mt-1 text-center w-full">
@@ -74,10 +101,16 @@ const Register: React.FC = () => {
           )}
         </div>
         <div className="flex flex-col">
-          <label className="mb-1 font-medium">Gender Selection</label>
+          <label
+            className="mb-1 font-medium"
+            style={{ color: "rgb(64, 145, 108)" }}
+          >
+            Gender Selection
+          </label>
           <select
             {...register("gender")}
             className="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            style={{ color: "rgb(85, 85, 85)" }}
           >
             <option value="female">Female</option>
             <option value="male">Male</option>
@@ -91,7 +124,11 @@ const Register: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="bg-gray-800 text-white rounded px-6 py-2 hover:bg-gray-700 font-semibold mt-4"
+          className="rounded px-6 py-2 font-semibold mt-4"
+          style={{
+            background: "rgb(64, 145, 108)",
+            color: "#fff",
+          }}
         >
           Register
         </button>

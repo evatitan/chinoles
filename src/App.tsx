@@ -6,10 +6,10 @@ import Layout from "./layout/Layout";
 const Home = lazy(() => import("./pages/home"));
 const Courses = lazy(() => import("./pages/courses"));
 const Blogs = lazy(() => import("./pages/blogs"));
-const About = lazy(() => import("./pages/about"));
 const Login = lazy(() => import("./pages/login"));
-const Register = lazy(() => import("./pages/register"));
-const Cooperation = lazy(() => import("./pages/cooperation"));
+// const Register = lazy(() => import("./pages/register"));
+// const Cooperation = lazy(() => import("./pages/cooperation"));
+const Tools = lazy(() => import("./pages/Tools"));
 
 function App() {
   return (
@@ -20,10 +20,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/about" element={<Cooperation />} />
+            <Route path="/tools" element={<Tools />} />
+            {/* <Route path="/cooperation" element={<Cooperation />} /> */}
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            {/* <Route path="/register" element={<Register />} /> */}
           </Routes>
         </Layout>
       </Suspense>

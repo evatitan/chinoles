@@ -2,30 +2,59 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const linkClass =
-  "inline-block rounded border border-gray-300 px-5 py-2 font-semibold shadow-sm " +
-  "bg-gray-800 text-white hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 " +
-  "transition aria-[current=page]:bg-blue-700 aria-[current=page]:text-white no-underline";
+  "font-semibold px-4 py-2 text-black hover:text-green-700 transition no-underline";
 
 const Menus: React.FC = () => (
-  <nav className="fixed top-0 left-0 w-full z-10 flex justify-center gap-3 sm:gap-5 p-4 bg-white shadow">
-    <NavLink to="/" className={linkClass}>
-      Home
-    </NavLink>
-    <NavLink to="/courses" className={linkClass}>
-      Courses
-    </NavLink>
-    <NavLink to="/blogs" className={linkClass}>
-      Blogs
-    </NavLink>
-    <NavLink to="/about" className={linkClass}>
-      About
-    </NavLink>
-    <NavLink to="/login" className={linkClass}>
-      Login
-    </NavLink>
-    <NavLink to="/register" className={linkClass}>
-      Register
-    </NavLink>
+  <nav
+    className="top-0 left-0 z-10"
+    style={{
+      width: "100%",
+      background: "transparent",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "1.5rem 0",
+    }}
+  >
+    <div
+      style={{
+        display: "flex",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {/* Left: Academy Name */}
+      <div
+        style={{
+          fontWeight: 800,
+          fontSize: "1.6rem",
+          color: "rgb(64, 145, 108)",
+          letterSpacing: "6px",
+          marginRight: "2.5rem",
+        }}
+      >
+        Chinoles Academy
+      </div>
+      {/* Right: Menu Items */}
+      <div className="flex gap-3 sm:gap-5 items-center">
+        <NavLink to="/" className={linkClass}>
+          Home
+        </NavLink>
+        <NavLink to="/courses" className={linkClass}>
+          Courses
+        </NavLink>
+        <NavLink to="/blogs" className={linkClass}>
+          Blogs
+        </NavLink>
+        <NavLink to="/tools" className={linkClass}>
+          Tools
+        </NavLink>
+        <NavLink to="/login" className={linkClass}>
+          Login
+        </NavLink>
+      </div>
+    </div>
   </nav>
 );
 

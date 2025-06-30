@@ -20,17 +20,6 @@ export type AuthState = {
   } | null;
 };
 
-export type Course = {
-  id?: string;
-  title: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  model: string;
-  // TODO: add duration
-};
-
 export type RegisterResponse = {
   message: string;
   token: string;
@@ -45,4 +34,17 @@ export type RegisterFormInputs = {
   email: string;
   password: string;
   gender: string;
+};
+
+export type Course = {
+  id: number;
+  title: string;
+  description: string;
+  prices: number;
+  img?: string | null;
+  category: "chinese" | "spanish";
+  duration: number;
+  model: "online" | "live" | "hybrid";
+  created_at: string;
+  updated_at: string;
 };
