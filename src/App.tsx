@@ -4,11 +4,9 @@ import { Suspense, lazy } from "react";
 import Layout from "./layout/Layout";
 
 const Home = lazy(() => import("./pages/home"));
-const Courses = lazy(() => import("./pages/courses"));
+const SpanishCourses = lazy(() => import("./pages/SpanishCourses"));
 const Blogs = lazy(() => import("./pages/blogs"));
-const Login = lazy(() => import("./pages/login"));
-// const Register = lazy(() => import("./pages/register"));
-// const Cooperation = lazy(() => import("./pages/cooperation"));
+const Contact = lazy(() => import("./pages/Contact"));
 const Tools = lazy(() => import("./pages/Tools"));
 
 function App() {
@@ -18,12 +16,10 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/courses/spanish" element={<SpanishCourses />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/tools" element={<Tools />} />
-            {/* <Route path="/cooperation" element={<Cooperation />} /> */}
-            <Route path="/login" element={<Login />} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Layout>
       </Suspense>

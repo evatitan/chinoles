@@ -1,5 +1,11 @@
 import React from "react";
+// import { useTranslation } from "react-i18next";
 import { Footer } from "../components/Footer";
+import Testimonials from "../components/Testimonials";
+import PricingSection from "../components/PricingSection";
+import languagesAvailableImg from "../assets/home/languages_available.png";
+import weOfferImg from "../assets/home/we_offer.png";
+import whyUsIMg from "../assets/home/why_us.png";
 
 const COLORS = {
   primary: "rgb(64, 145, 108)",
@@ -9,127 +15,96 @@ const COLORS = {
   text: "#22223B",
 };
 
-const sections = [
-  {
-    title: "Welcome to Chinoles",
-    text: (
-      <div>
-        <p>
-          Unlock your language potential with personalized, professional
-          instruction. Whether you're a beginner or looking to refine your
-          skills, our academy offers customized lessons that fit your goals,
-          schedule, and pace.
-        </p>
-        <div style={{ marginTop: "1em" }}>
-          <a
-            href="#"
-            style={{
-              background: COLORS.primary,
-              color: "#fff",
-              padding: "0.7em 1.5em",
-              borderRadius: "6px",
-              textDecoration: "none",
-              marginRight: "1em",
-              fontWeight: 600,
-            }}
-          >
-            👉 Book Your Trial Now
-          </a>
-          <a
-            href="#"
-            style={{
-              background: COLORS.accent,
-              color: COLORS.text,
-              padding: "0.7em 1.5em",
-              borderRadius: "6px",
-              textDecoration: "none",
-              fontWeight: 600,
-            }}
-          >
-            👉 Explore Our Courses
-          </a>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "What We Offer",
-    text: (
-      <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-        <li>1-on-1 Online Lessons with experienced tutors</li>
-        <li>Interactive Practice with real-life scenarios</li>
-        <li>Tailored Curriculum for all levels and ages</li>
-        <li>Support for Exams (HSK, DELE etc.)</li>
-        <li>Flexible Scheduling - learn when it suits you</li>
-      </ul>
-    ),
-    img: "https://via.placeholder.com/350x200?text=What+We+Offer",
-  },
-  {
-    title: "Languages Available",
-    text: (
-      <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-        <li>Chinese</li>
-        <li>English</li>
-        <li>Spanish</li>
-        <li>Correan</li>
-        <li>More coming soon!</li>
-      </ul>
-    ),
-    img: "https://via.placeholder.com/350x200?text=Languages",
-  },
-  {
-    title: "Why Choose Chinoles?",
-    text: (
-      <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-        <li>Certified native-speaking instructors</li>
-        <li>100% online, accessible anywhere</li>
-        <li>Progress tracking and personal feedback</li>
-        <li>Affordable plans for every learner</li>
-      </ul>
-    ),
-    img: "https://via.placeholder.com/350x200?text=Why+Choose+Us",
-  },
-  {
-    title: "Start Today!",
-    text: (
-      <div>
-        Book a free trial lesson and begin your journey toward fluency.
-        <div style={{ marginTop: "1em" }}>
-          <a
-            href="#"
-            style={{
-              background: COLORS.primary,
-              color: "#fff",
-              padding: "0.7em 1.5em",
-              borderRadius: "6px",
-              textDecoration: "none",
-              marginRight: "1em",
-              fontWeight: 600,
-            }}
-          >
-            👉 Book Your Trial Now
-          </a>
-          <a
-            href="#"
-            style={{
-              background: COLORS.accent,
-              color: COLORS.text,
-              padding: "0.7em 1.5em",
-              borderRadius: "6px",
-              textDecoration: "none",
-              fontWeight: 600,
-            }}
-          >
-            👉 Explore Our Courses
-          </a>
-        </div>
-      </div>
-    ),
-  },
-];
-
 const Home: React.FC = () => {
+  // const { t } = useTranslation();
+  const sections = [
+    {
+      title: "¡Aprende Español con Chinoles!",
+      text: (
+        <div>
+          <p>
+            Descubre el español de manera personalizada y profesional. Ya seas
+            principiante o quieras perfeccionar tu nivel, ofrecemos clases
+            adaptadas a tus objetivos, horario y ritmo de aprendizaje.
+          </p>
+          <div style={{ marginTop: "1.5em" }}>
+            <a
+              href="/contact"
+              style={{
+                background: COLORS.primary,
+                color: "#fff",
+                padding: "1em 2em",
+                borderRadius: "8px",
+                textDecoration: "none",
+                marginRight: "1em",
+                fontWeight: 600,
+                fontSize: "1.1em",
+                display: "inline-block",
+                marginBottom: "0.5em",
+              }}
+            >
+              🚀 Solicita Información Gratuita
+            </a>
+            <a
+              href="/courses/spanish"
+              style={{
+                background: COLORS.accent,
+                color: COLORS.text,
+                padding: "1em 2em",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "1.1em",
+                display: "inline-block",
+              }}
+            >
+              📚 Ver Nuestros Cursos
+            </a>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "¿Qué Ofrecemos?",
+      text: (
+        <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
+          <li>Clases 1-a-1 Online con profesores experimentados</li>
+          <li>Práctica Interactiva con escenarios de la vida real</li>
+          <li>Currículo Personalizado para todos los niveles y edades</li>
+          <li>Preparación para Exámenes (DELE, SIELE, etc.)</li>
+          <li>Horarios Flexibles - aprende cuando te convenga</li>
+        </ul>
+      ),
+      img: weOfferImg,
+    },
+    {
+      title: "Especialización en Español",
+      text: (
+        <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
+          <li>Español General (Conversación, Gramática, Vocabulario)</li>
+          <li>Español de Negocios</li>
+          <li>Español para Viajes y Turismo</li>
+          <li>Preparación DELE/SIELE</li>
+          <li>Español Médico y Técnico</li>
+        </ul>
+      ),
+      img: languagesAvailableImg,
+    },
+    {
+      title: "¿Por Qué Elegir Chinoles?",
+      text: (
+        <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
+          <li>Profesores nativos certificados y experimentados</li>
+          <li>100% online, accesible desde cualquier lugar</li>
+          <li>Seguimiento del progreso y feedback personalizado</li>
+          <li>Planes accesibles para cada tipo de estudiante</li>
+          <li>Metodología probada y resultados garantizados</li>
+        </ul>
+      ),
+      img: whyUsIMg,
+    },
+  ];
+
   return (
     <div
       style={{
@@ -148,34 +123,28 @@ const Home: React.FC = () => {
           maxWidth: "80%",
           width: "100%",
           margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          background: "#fff",
+          borderRadius: "12px",
+          padding: "0 1rem",
+          color: COLORS.text,
         }}
       >
-        {sections.map((section, idx) => (
+        {sections.map((section, index) => (
           <div
-            key={section.title}
+            key={index}
             style={{
               display: "flex",
-              flexDirection: idx % 2 === 0 ? "row" : "row-reverse",
+              flexDirection: index % 2 === 0 ? "row" : "row-reverse",
               alignItems: "center",
-              background: "transparent",
-              borderRadius: "0",
-              boxShadow: "none",
-              marginBottom: "4rem",
-              padding: "4rem 0",
-              gap: "3.5rem",
-              minHeight: "350px",
-              width: "100%",
-              justifyContent: "center",
+              gap: "3rem",
+              paddingBottom: "5rem",
             }}
           >
             <div style={{ flex: 1 }}>
               <h2
                 style={{
-                  color: COLORS.primary, // use principal color for headers
-                  fontWeight: 700,
+                  color: COLORS.primary,
+                  fontWeight: 800,
                   marginBottom: "2rem",
                   fontSize: "2.2rem",
                 }}
@@ -204,7 +173,7 @@ const Home: React.FC = () => {
                     width: "100%",
                     maxWidth: 420,
                     borderRadius: "14px",
-                    boxShadow: "0 2px 8px rgba(44, 62, 80, 0.08)",
+                    boxShadow: "0 2px 8px rgba(44, 62, 80, 0.02)",
                     objectFit: "cover",
                     background: "#eee",
                     minHeight: "220px",
@@ -215,88 +184,90 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
-      {/* Review Section */}
+
+      {/* Call to Action Section */}
       <section
         style={{
           width: "100%",
-          background: "#F7FFF7",
-          padding: "4rem 0 3rem 0",
-          margin: "0 auto",
+          background:
+            "linear-gradient(135deg, rgb(64, 145, 108), rgb(52, 168, 83))",
+          padding: "5rem 2rem",
+          margin: "3rem 0",
+          textAlign: "center",
         }}
       >
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <h2
             style={{
-              color: COLORS.primary,
-              fontWeight: 700,
-              fontSize: "2rem",
-              marginBottom: "2.5rem",
-              textAlign: "center",
-              letterSpacing: "1px",
+              color: "#fff",
+              fontWeight: 800,
+              fontSize: "2.5rem",
+              marginBottom: "1.5rem",
             }}
           >
-            What Our Students Say
+            ¡Tu Viaje al Español Empieza Hoy!
           </h2>
+          <p
+            style={{
+              color: "#fff",
+              fontSize: "1.3rem",
+              marginBottom: "2.5rem",
+              opacity: 0.95,
+            }}
+          >
+            Únete a cientos de estudiantes que ya están hablando español con
+            confianza. Obtén tu clase de prueba gratuita y descubre nuestro
+            método personalizado.
+          </p>
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "2.5rem",
-              maxWidth: 900,
-              margin: "0 auto",
+              display: "flex",
+              gap: "1rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
             }}
           >
-            <div
+            <a
+              href="/contact"
               style={{
                 background: "#fff",
-                borderRadius: "12px",
-                boxShadow: "0 2px 8px rgba(44, 62, 80, 0.06)",
-                padding: "2rem",
-                fontSize: "1.15rem",
-                color: COLORS.text,
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.2rem",
+                color: COLORS.primary,
+                padding: "1.2em 2.5em",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: 700,
+                fontSize: "1.2em",
+                display: "inline-block",
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <div>
-                <strong>J.W</strong>{" "}
-                <span style={{ color: "#888", fontSize: "0.95rem" }}>
-                  — Spain
-                </span>
-              </div>
-              <div>
-                “Chinoles Academy helped me pass my HSK exam! The teachers are
-                patient and the lessons are fun and effective.”
-              </div>
-            </div>
-            <div
+              🎯 Clase Gratuita Ahora
+            </a>
+            <a
+              href="/courses/spanish"
               style={{
-                background: "#fff",
-                borderRadius: "12px",
-                boxShadow: "0 2px 8px rgba(44, 62, 80, 0.06)",
-                padding: "2rem",
-                fontSize: "1.15rem",
-                color: COLORS.text,
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.2rem",
+                background: "transparent",
+                color: "#fff",
+                padding: "1.2em 2.5em",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: 700,
+                fontSize: "1.2em",
+                display: "inline-block",
+                border: "2px solid #fff",
               }}
             >
-              <div>
-                <strong>Gaby</strong>{" "}
-                <span style={{ color: "#888", fontSize: "0.95rem" }}>
-                  — China
-                </span>
-              </div>
-              <div>
-                “The flexible scheduling and personalized curriculum made it
-                easy for me to learn Spanish while working full-time.”
-              </div>
-            </div>
+              Ver Planes y Precios
+            </a>
           </div>
         </div>
       </section>
+
+      {/* Pricing Section */}
+      <PricingSection />
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       <Footer />
     </div>
