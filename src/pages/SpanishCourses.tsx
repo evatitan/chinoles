@@ -1,12 +1,5 @@
 import React from "react";
-import PronounceCourses from "../components/PronounceCourses";
-import GrammarCourses from "../components/GrammarCourses";
-import type { Course } from "../types/types";
-import { useCourses } from "../hooks/useAsync";
-import { useDispatch } from "react-redux";
-import { setCourses } from "../redux/slices/coursesSlice";
-import type { AppDispatch } from "../redux/store";
-import { useNavigate } from "react-router-dom";
+import "./SpanishCourses.css";
 
 const COLORS = {
   primary: "#2D6A4F",
@@ -17,114 +10,204 @@ const COLORS = {
   cardBorder: "#E9ECEF",
 };
 
-const courseTabs = [
-  { key: "pronounce", label: "Pronounce" },
-  { key: "grammar", label: "Grammar" },
-  { key: "tailor", label: "Tailor" },
+const courseCategories = [
+  {
+    title: "发音课程",
+    description: "从基础音素到自然对话的完整发音训练",
+    features: ["西班牙语音素系统", "重音和语调", "连音规则", "地区口音差异"],
+    image: "/courses/pronunciation.jpg",
+  },
+  {
+    title: "语法课程",
+    description: "系统化的语法学习，打造坚实的语言基础",
+    features: ["基础语法概念", "动词变位", "时态用法", "虚拟语气"],
+    image: "/courses/grammar.jpg",
+  },
+  {
+    title: "DELE考试课程",
+    description: "针对性备考，提高通过率",
+    features: [
+      "模拟真题演练",
+      "考试技巧指导",
+      "听说读写全方位训练",
+      "个性化学习计划",
+    ],
+    image: "/courses/dele.jpg",
+  },
+  {
+    title: "时态专项课程",
+    description: "掌握西班牙语最具挑战性的语法点",
+    features: ["现在时态系统", "过去时态系统", "将来时态", "虚拟语气时态"],
+    image: "/courses/tenses.jpg",
+  },
 ];
 
-// // Example data for Pronounce course
-// const PronounceCourses = {
-//   title: "Spanish Pronunciation Mastery",
-//   price: 49.99,
-//   duration: 12, // hours
-//   content:
-//     "Master Spanish pronunciation with step-by-step video lessons and practice exercises.",
-//   chapters: [
-//     { title: "Introduction to Spanish Sounds", preview: true },
-//     { title: "Vowels and Diphthongs", preview: true },
-//     { title: "Consonants and Stress", preview: false },
-//     { title: "Intonation and Rhythm", preview: false },
-//     { title: "Common Pronunciation Mistakes", preview: false },
-//   ],
-// };
-
 const SpanishCourses: React.FC = () => {
-  const { fetchData, response } = useCourses();
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-  const [category, setCategory] = React.useState<string>("all");
-  const [tab, setTab] = React.useState<string>("pronounce");
-
-  React.useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const data: Course[] = await fetchData();
-        if (data) {
-          dispatch(setCourses(data));
-        }
-      } catch (error) {
-        console.error("Failed to fetch courses:", error);
-      }
-    };
-
-    fetchCourses();
-  }, [fetchData, dispatch]);
-
-  // Filtered courses by category
-  const filteredCourses = React.useMemo(() => {
-    if (!response) return [];
-    if (category === "all") return response;
-    return response.filter((course) => course.category === category);
-  }, [response, category]);
-
   return (
     <div
       style={{
         background: "#fff",
         minHeight: "100vh",
-        paddingTop: "6rem",
-        paddingBottom: "2rem",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      <div style={{ maxWidth: 1200, width: "100%", margin: "0 auto" }}>
-        <h1
+      {/* 推荐去专业网站部分 */}
+      <section
+        style={{
+          width: "100%",
+          padding: "4rem 2rem",
+          background: COLORS.tagBg,
+        }}
+      >
+        <div
           style={{
-            fontSize: "2.7rem",
-            fontWeight: 800,
-            color: COLORS.primary,
-            marginBottom: "0.5rem",
+            maxWidth: 800,
+            margin: "0 auto",
+            textAlign: "center",
+            padding: "3rem",
+            background: "#fff",
+            borderRadius: "16px",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           }}
         >
-          Spanish Courses
-        </h1>
-        <p>You will find some of the courses that you like</p>
-        {/* Tabs for course types */}
-        <div style={{ margin: "1.5rem 0", display: "flex", gap: "1rem" }}>
-          {courseTabs.map((t) => (
-            <button
-              key={t.key}
-              onClick={() => {
-                if (t.key === "tailor") {
-                  navigate("/contact");
-                } else {
-                  setTab(t.key);
-                }
-              }}
-              style={{
-                background: tab === t.key ? COLORS.primary : "#f3f3f3",
-                color: tab === t.key ? "#fff" : COLORS.text,
-                border: "none",
-                borderRadius: "6px",
-                padding: "0.5em 1.2em",
-                fontWeight: 600,
-                cursor: "pointer",
-                fontSize: "1rem",
-                transition: "background 0.2s",
-              }}
-            >
-              {t.label}
-            </button>
-          ))}
+          <h2
+            style={{
+              fontSize: "2rem",
+              fontWeight: 700,
+              color: COLORS.primary,
+              marginBottom: "1rem",
+            }}
+          >
+            探索更多学习资源
+          </h2>
+          <p
+            style={{
+              fontSize: "1.1rem",
+              color: COLORS.text,
+              marginBottom: "2rem",
+              lineHeight: 1.6,
+            }}
+          >
+            访问我们的专业西班牙语学习平台
+            chinoles.com，获取更多精品课程、学习资源和互动社区。
+          </p>
+          <a
+            href="https://chinoles.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button"
+          >
+            前往专业学习平台 →
+          </a>
         </div>
-        {/* Render course type component */}
-        {tab === "pronounce" && <PronounceCourses />}
-        {tab === "grammar" && <GrammarCourses />}
-      </div>
+      </section>
+      {/* 课程列表部分 */}
+      <section
+        style={{
+          width: "100%",
+          padding: "6rem 2rem",
+          background: "#fff",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h1
+            style={{
+              fontSize: "2.7rem",
+              fontWeight: 800,
+              color: COLORS.primary,
+              marginBottom: "1.5rem",
+              textAlign: "center",
+            }}
+          >
+            西班牙语精品课程
+          </h1>
+          <p
+            style={{
+              textAlign: "center",
+              color: COLORS.text,
+              fontSize: "1.2rem",
+              marginBottom: "3rem",
+            }}
+          >
+            为您提供全方位的西班牙语学习解决方案
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "2rem",
+              padding: "0 1rem",
+            }}
+          >
+            {courseCategories.map((course, index) => (
+              <div key={index} className="course-card">
+                <div
+                  style={{
+                    height: "160px",
+                    background: COLORS.primary,
+                    borderRadius: "12px 12px 0 0",
+                  }}
+                />
+                <div style={{ padding: "1.5rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.4rem",
+                      fontWeight: 700,
+                      color: COLORS.primary,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {course.title}
+                  </h3>
+                  <p
+                    style={{
+                      color: COLORS.text,
+                      marginBottom: "1rem",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    {course.description}
+                  </p>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: "0 0 1rem 0",
+                    }}
+                  >
+                    {course.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginBottom: "0.5rem",
+                          fontSize: "0.9rem",
+                          color: COLORS.text,
+                        }}
+                      >
+                        <span
+                          style={{
+                            color: COLORS.primary,
+                            marginRight: "0.5rem",
+                          }}
+                        >
+                          ✓
+                        </span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

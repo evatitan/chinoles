@@ -1,32 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
 const COLORS = {
   primary: "rgb(64, 145, 108)",
   text: "rgb(85, 85, 85)",
 };
 
-const testimonials = [
-  {
-    name: "María González",
-    country: "México",
-    text: "Chinoles cambió mi vida profesional. En solo 6 meses pasé de principiante a poder hacer presentaciones en español. Los profesores son increíbles.",
-    level: "A1 → B2",
-  },
-  {
-    name: "James Wilson",
-    country: "Estados Unidos",
-    text: "La flexibilidad de horarios fue clave para mí. Trabajo tiempo completo y aún así pude aprender español. ¡Ahora viajo por Latinoamérica sin problemas!",
-    level: "A2 → C1",
-  },
-  {
-    name: "Li Wei",
-    country: "China",
-    text: "Excelente preparación para el DELE. Aprobé el B2 en mi primer intento gracias al método personalizado de Chinoles.",
-    level: "B1 → B2 DELE",
-  },
-];
-
 const Testimonials: React.FC = () => {
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+
+  if (!currentLang || !currentLang.testimonials) {
+    return null;
+  }
+
   return (
     <section
       style={{
@@ -45,7 +32,7 @@ const Testimonials: React.FC = () => {
             marginBottom: "1rem",
           }}
         >
-          Lo Que Dicen Nuestros Estudiantes
+          {currentLang.testimonials.title}
         </h2>
         <p
           style={{
@@ -55,7 +42,7 @@ const Testimonials: React.FC = () => {
             opacity: 0.8,
           }}
         >
-          Resultados reales de personas reales
+          {currentLang.testimonials.description}
         </p>
 
         <div
@@ -66,7 +53,7 @@ const Testimonials: React.FC = () => {
             marginTop: "2rem",
           }}
         >
-          {testimonials.map((testimonial, index) => (
+          {currentLang.testimonials.items.map((testimonial, index) => (
             <div
               key={index}
               style={{

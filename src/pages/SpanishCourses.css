@@ -1,0 +1,28 @@
+.course-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.cta-button {
+  display: inline-block;
+  background: #2D6A4F;
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.cta-button:hover {
+  opacity: 0.9;
+}

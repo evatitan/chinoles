@@ -2,16 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
+import type { LanguageState } from "../types/languages";
 import LanguageSwitcher from "./LanguageSwitcher";
-import menuTexts from "../constants/menuTexts";
 
 const linkClass =
   "font-semibold px-4 py-2 text-black hover:text-green-700 transition no-underline";
 
 const Menus: React.FC = () => {
-  const currentLang = useSelector(
-    (state: RootState) => state.lang.currentLang
-  ) as keyof typeof menuTexts;
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+
+  if (!currentLang || !currentLang.menu) {
+    return null; // 或者显示加载状态
+  }
 
   return (
     <nav
@@ -43,7 +45,7 @@ const Menus: React.FC = () => {
             marginRight: "2.5rem",
           }}
         >
-          Chinoles - Español Online
+          Chinoles - 西班牙语学院
         </div>
         {/* Right: Menu Items + Language Switcher */}
         <div
@@ -51,19 +53,16 @@ const Menus: React.FC = () => {
           style={{ position: "relative" }}
         >
           <NavLink to="/" className={linkClass}>
-            {menuTexts[currentLang].home}
+            {currentLang.menu.home}
           </NavLink>
           <NavLink to="/courses/spanish" className={linkClass}>
-            {menuTexts[currentLang].courses}
-          </NavLink>
-          <NavLink to="/blogs" className={linkClass}>
-            {menuTexts[currentLang].blog}
+            {currentLang.menu.courses}
           </NavLink>
           <NavLink to="/tools" className={linkClass}>
-            {menuTexts[currentLang].resources}
+            {currentLang.menu.resources}
           </NavLink>
           <NavLink to="/contact" className={linkClass}>
-            {menuTexts[currentLang].contact}
+            {currentLang.menu.contact}
           </NavLink>
           <LanguageSwitcher />
         </div>

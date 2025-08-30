@@ -17,10 +17,10 @@ export const Footer: React.FC = () => {
       >
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ marginBottom: "0.5rem", fontWeight: 600 }}>
-            Chinoles Academy © {new Date().getFullYear()}
+            Chinoles 学院 © {new Date().getFullYear()}
           </div>
           <div>
-            Contact:{" "}
+            联系我们：{" "}
             <a
               href="mailto:info@chinoles.com"
               style={{ color: "#fff", textDecoration: "underline" }}
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             </a>
           </div>
           <div style={{ marginTop: "0.5rem", fontSize: "0.95rem" }}>
-            Follow us on
+            关注我们的社交媒体
             <a
               href="#"
               style={{
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              Twitter
+              推特
             </a>
             <a
               href="#"
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
                 textDecoration: "underline",
               }}
             >
-              Facebook
+              脸书
             </a>
           </div>
         </div>

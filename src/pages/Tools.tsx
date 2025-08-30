@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 const COLORS = {
   primary: "#2D6A4F",
   accent: "#F9C74F",
@@ -24,6 +26,8 @@ const tools = [
 ];
 
 const Tools: React.FC = () => {
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+
   return (
     <>
       <div
@@ -47,12 +51,9 @@ const Tools: React.FC = () => {
               marginBottom: "2rem",
             }}
           >
-            Tools and Resources
+            {currentLang.tools.title}
           </h1>
-          <p>
-            You will find some of the useful tools and resources for you
-            learning
-          </p>
+          <p>{currentLang.tools.description}</p>
           <div
             style={{
               display: "grid",

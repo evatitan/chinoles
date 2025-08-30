@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
 const COLORS = {
   primary: "rgb(64, 145, 108)",
@@ -6,52 +8,36 @@ const COLORS = {
   accent: "#F9C74F",
 };
 
-const plans = [
-  {
-    name: "Plan Básico",
-    price: "$25",
-    period: "/clase",
-    features: [
-      "Clases individuales 1-a-1",
-      "45 minutos por clase",
-      "Material didáctico incluido",
-      "Horario flexible",
-      "Feedback personalizado",
-    ],
-    recommended: false,
-  },
-  {
-    name: "Plan Intensivo",
-    price: "$20",
-    period: "/clase",
-    features: [
-      "8 clases al mes (2x semana)",
-      "45 minutos por clase",
-      "Material didáctico premium",
-      "Seguimiento del progreso",
-      "Tareas y ejercicios extra",
-      "Soporte por WhatsApp",
-    ],
-    recommended: true,
-  },
-  {
-    name: "Plan Premium",
-    price: "$18",
-    period: "/clase",
-    features: [
-      "12 clases al mes (3x semana)",
-      "45 minutos por clase",
-      "Preparación para exámenes",
-      "Conversación temática",
-      "Clases de repaso incluidas",
-      "Soporte 24/7",
-      "Material extra descargable",
-    ],
-    recommended: false,
-  },
-];
-
 const PricingSection: React.FC = () => {
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+
+  if (!currentLang || !currentLang.pricing) {
+    return null; // 或显示加载状态
+  }
+
+  const plans = [
+    {
+      name: currentLang.pricing.plans.basic.name,
+      price: "$25",
+      period: currentLang.pricing.period,
+      features: currentLang.pricing.plans.basic.features,
+      recommended: false,
+    },
+    {
+      name: currentLang.pricing.plans.intensive.name,
+      price: "$20",
+      period: currentLang.pricing.period,
+      features: currentLang.pricing.plans.intensive.features,
+      recommended: true,
+    },
+    {
+      name: currentLang.pricing.plans.premium.name,
+      price: "$18",
+      period: currentLang.pricing.period,
+      features: currentLang.pricing.plans.premium.features,
+      recommended: false,
+    },
+  ];
   return (
     <section
       style={{
@@ -70,7 +56,7 @@ const PricingSection: React.FC = () => {
             marginBottom: "1rem",
           }}
         >
-          Planes Diseñados Para Tu Éxito
+          {currentLang.pricing.title}
         </h2>
         <p
           style={{
@@ -80,8 +66,7 @@ const PricingSection: React.FC = () => {
             opacity: 0.8,
           }}
         >
-          Elige el plan que mejor se adapte a tu ritmo de aprendizaje y
-          objetivos
+          {currentLang.pricing.description}
         </p>
 
         <div
@@ -125,7 +110,7 @@ const PricingSection: React.FC = () => {
                     fontWeight: 700,
                   }}
                 >
-                  🌟 Más Popular
+                  {currentLang.pricing.popularTag}
                 </div>
               )}
 
@@ -209,7 +194,11 @@ const PricingSection: React.FC = () => {
                   transition: "all 0.3s ease",
                 }}
               >
-                {plan.recommended ? "🚀 Empezar Ahora" : "Elegir Plan"}
+                {
+                  currentLang.pricing[
+                    plan.recommended ? "ctaStartButton" : "ctaChooseButton"
+                  ]
+                }
               </a>
             </div>
           ))}
@@ -232,12 +221,10 @@ const PricingSection: React.FC = () => {
               marginBottom: "1rem",
             }}
           >
-            🎁 ¡Oferta Especial!
+            {currentLang.pricing.specialOffer.title}
           </h3>
           <p style={{ color: COLORS.text, fontSize: "1.1rem" }}>
-            <strong>Primera clase completamente GRATIS</strong> para nuevos
-            estudiantes. Sin compromiso. Prueba nuestro método y conoce a tu
-            profesor ideal.
+            {currentLang.pricing.specialOffer.description}
           </p>
         </div>
       </div>

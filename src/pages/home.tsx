@@ -1,5 +1,7 @@
 import React from "react";
-// import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
+import type { LanguageState } from "../types/languages";
 import { Footer } from "../components/Footer";
 import Testimonials from "../components/Testimonials";
 import PricingSection from "../components/PricingSection";
@@ -16,17 +18,18 @@ const COLORS = {
 };
 
 const Home: React.FC = () => {
-  // const { t } = useTranslation();
+  const currentLang = useSelector((state: RootState) => state.lang.currentLang);
+
+  if (!currentLang || !currentLang.home) {
+    return <div>Loading translations...</div>;
+  }
+
   const sections = [
     {
-      title: "¡Aprende Español con Chinoles!",
+      title: currentLang.home.title,
       text: (
         <div>
-          <p>
-            Descubre el español de manera personalizada y profesional. Ya seas
-            principiante o quieras perfeccionar tu nivel, ofrecemos clases
-            adaptadas a tus objetivos, horario y ritmo de aprendizaje.
-          </p>
+          <p>{currentLang.home.intro}</p>
           <div style={{ marginTop: "1.5em" }}>
             <a
               href="/contact"
@@ -43,7 +46,7 @@ const Home: React.FC = () => {
                 marginBottom: "0.5em",
               }}
             >
-              🚀 Solicita Información Gratuita
+              {currentLang.home.cta.info}
             </a>
             <a
               href="/courses/spanish"
@@ -58,47 +61,41 @@ const Home: React.FC = () => {
                 display: "inline-block",
               }}
             >
-              📚 Ver Nuestros Cursos
+              {currentLang.home.cta.courses}
             </a>
           </div>
         </div>
       ),
     },
     {
-      title: "¿Qué Ofrecemos?",
+      title: currentLang.home.offer.title,
       text: (
         <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-          <li>Clases 1-a-1 Online con profesores experimentados</li>
-          <li>Práctica Interactiva con escenarios de la vida real</li>
-          <li>Currículo Personalizado para todos los niveles y edades</li>
-          <li>Preparación para Exámenes (DELE, SIELE, etc.)</li>
-          <li>Horarios Flexibles - aprende cuando te convenga</li>
+          {currentLang.home.offer.items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
       ),
       img: weOfferImg,
     },
     {
-      title: "Especialización en Español",
+      title: currentLang.home.specialization.title,
       text: (
         <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-          <li>Español General (Conversación, Gramática, Vocabulario)</li>
-          <li>Español de Negocios</li>
-          <li>Español para Viajes y Turismo</li>
-          <li>Preparación DELE/SIELE</li>
-          <li>Español Médico y Técnico</li>
+          {currentLang.home.specialization.items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
       ),
       img: languagesAvailableImg,
     },
     {
-      title: "¿Por Qué Elegir Chinoles?",
+      title: currentLang.home.whyUs.title,
       text: (
         <ul style={{ margin: 0, paddingLeft: "1.2em" }}>
-          <li>Profesores nativos certificados y experimentados</li>
-          <li>100% online, accesible desde cualquier lugar</li>
-          <li>Seguimiento del progreso y feedback personalizado</li>
-          <li>Planes accesibles para cada tipo de estudiante</li>
-          <li>Metodología probada y resultados garantizados</li>
+          {currentLang.home.whyUs.items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
       ),
       img: whyUsIMg,
@@ -120,12 +117,11 @@ const Home: React.FC = () => {
     >
       <div
         style={{
-          maxWidth: "80%",
+          maxWidth: "1200px",
           width: "100%",
           margin: "0 auto",
           background: "#fff",
           borderRadius: "12px",
-          padding: "0 1rem",
           color: COLORS.text,
         }}
       >
@@ -205,7 +201,7 @@ const Home: React.FC = () => {
               marginBottom: "1.5rem",
             }}
           >
-            ¡Tu Viaje al Español Empieza Hoy!
+            {currentLang.home.cta_section.title}
           </h2>
           <p
             style={{
@@ -215,9 +211,7 @@ const Home: React.FC = () => {
               opacity: 0.95,
             }}
           >
-            Únete a cientos de estudiantes que ya están hablando español con
-            confianza. Obtén tu clase de prueba gratuita y descubre nuestro
-            método personalizado.
+            {currentLang.home.cta_section.description}
           </p>
           <div
             style={{
@@ -241,7 +235,7 @@ const Home: React.FC = () => {
                 boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
               }}
             >
-              🎯 Clase Gratuita Ahora
+              {currentLang.home.cta_section.trial}
             </a>
             <a
               href="/courses/spanish"
@@ -257,7 +251,7 @@ const Home: React.FC = () => {
                 border: "2px solid #fff",
               }}
             >
-              Ver Planes y Precios
+              {currentLang.home.cta_section.plans}
             </a>
           </div>
         </div>
